@@ -27,7 +27,7 @@ function App() {
         <div className="weather-cards">
           <div className="weather-card">
             <span>{data?.name}</span>
-            <span>🌤 {data?.main?.temp}°C</span>
+            <span>🌤 {convertToCelsius(data?.main?.temp)}°C</span>
           </div>
         </div>
       </header>

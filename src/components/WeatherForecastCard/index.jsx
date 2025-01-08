@@ -5,11 +5,9 @@ import "./index.css";
 
 const WeatherForecastCrad = ({lat, lon}) => {
   const { data } = useGetFivedayWeatherForecastQuery({lat, lon});
-  // console.log(data?.list?.map((d) => console.log(d)));
+  console.log(data?.list?.map((d) => console.log(d)));
   console.log(lat, lon);
   const {convertUnixToFormattedDate, convertUnixToLocalTime} = useUnixToLocalTimeContext()
-
-
   const convertToCelsius = useConvertToCelsiusContext();
 
   return (
