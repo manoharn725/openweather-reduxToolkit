@@ -3,6 +3,7 @@ import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
 import SearchBar from "./components/SearchBar";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
 import { useUnixToLocalTimeContext } from "./components/context/UnixToLocalTime/useUnixToLocalTimeContext";
+import { useConvertToCelsiusContext } from "./components/context/ConvertToCelsius/useConvertToCelsiusContext";
 import "./App.css";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     useUnixToLocalTimeContext();
 
   // console.log(data);
-  const convertToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+  const convertToCelsius = useConvertToCelsiusContext();
   const handleSubmit = async (term) => {
     setSearchTerm(term);
   };

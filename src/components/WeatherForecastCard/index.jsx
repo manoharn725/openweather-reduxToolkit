@@ -1,5 +1,6 @@
 import { useGetFivedayWeatherForecastQuery } from "../../store/api/currentWeatherApi";
 import { useUnixToLocalTimeContext } from "../context/UnixToLocalTime/useUnixToLocalTimeContext";
+import { useConvertToCelsiusContext } from "../context/ConvertToCelsius/useConvertToCelsiusContext";
 import "./index.css";
 
 const WeatherForecastCrad = ({lat, lon}) => {
@@ -9,7 +10,7 @@ const WeatherForecastCrad = ({lat, lon}) => {
   const {convertUnixToFormattedDate, convertUnixToLocalTime} = useUnixToLocalTimeContext()
 
 
-  const convertToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+  const convertToCelsius = useConvertToCelsiusContext();
 
   return (
     <div className="weather-forecast-card__container">
