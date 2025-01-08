@@ -33,7 +33,7 @@ function App() {
       </header>
       <h1>Current Weather</h1>
       {/* weather-container */}
-      {/* {data.map((data) => ( */}
+      
       <div className="weather-container" key={data?.id}>
         <div className="location">
           {data?.name}, {data?.sys?.country}
@@ -74,8 +74,7 @@ function App() {
 
         <footer>Last updated: {convertUnixToFormattedDate(data?.dt)}</footer>
       </div>
-      {/* ))} */}
-
+   
       {/* <WeatherForecastCrad /> */}
     </>
   );
