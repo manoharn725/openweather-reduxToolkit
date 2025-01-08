@@ -24,8 +24,8 @@ export const currentWeatherApi = createApi({
       }),
     }),
     getFivedayWeatherForecast: builder.query({
-      query: (lat="75.1278", lan="12.8206") => ({
-        url: `/data/2.5/forecast?lat=${lat}&lon=${lan}&appid=${apiKey}`,
+      query: ({lat, lon}) => ({
+        url: `/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`,
         method: "GET",
       })
     })

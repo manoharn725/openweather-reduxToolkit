@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
 import SearchBar from "./components/SearchBar";
-// import WeatherForecastCrad from "./components/WeatherForecastCard";
+import WeatherForecastCrad from "./components/WeatherForecastCard";
 import { useUnixToLocalTimeContext } from "./components/context/UnixToLocalTime/useUnixToLocalTimeContext";
 import "./App.css";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState();
   const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
-  const {convertUnixToLocalTime, convertUnixToFormattedDate} = useUnixToLocalTimeContext();
+  const { convertUnixToLocalTime, convertUnixToFormattedDate } =
+    useUnixToLocalTimeContext();
 
-  
-  console.log(data);
+  // console.log(data);
   const convertToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
   const handleSubmit = async (term) => {
     setSearchTerm(term);
@@ -29,11 +29,10 @@ function App() {
             <span>🌤 {data?.main?.temp}°C</span>
           </div>
         </div>
-        
       </header>
       <h1>Current Weather</h1>
       {/* weather-container */}
-      
+
       <div className="weather-container" key={data?.id}>
         <div className="location">
           {data?.name}, {data?.sys?.country}
@@ -68,14 +67,14 @@ function App() {
               src="https://img.icons8.com/emoji/48/000000/sunset-emoji.png"
               alt="Sunset"
             />{" "}
-            {convertUnixToLocalTime(data?.sys?.sunset,data?.timezone)}
+            {convertUnixToLocalTime(data?.sys?.sunset, data?.timezone)}
           </div>
         </div>
 
         <footer>Last updated: {convertUnixToFormattedDate(data?.dt)}</footer>
       </div>
-   
-      {/* <WeatherForecastCrad /> */}
+      <h1>Five Days Forecast</h1>
+      <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
     </>
   );
 }
