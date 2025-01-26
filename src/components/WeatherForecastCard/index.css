@@ -1,7 +1,7 @@
 .weather-forecast-card__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top: 30px;
 }
 .weather-forecast-card {
@@ -10,4 +10,32 @@
   margin: 10px;
   border-radius: 8px;
   width: 200px;
+}
+
+select[name="data-selector"] {
+  /* appearance: none;  */
+  background-color: #1e3a5f;
+  color: #ffffff;
+  font-size: 16px; 
+  padding: 10px 15px; 
+  border: 1px solid #ffffff;
+  border-radius: 8px; 
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+}
+
+select[name="data-selector"]:hover {
+  background-color: #1e3a5f;
+}
+
+select[name="data-selector"]:focus {
+  border-color: #2c4a6e;
+  box-shadow: 0 0 5px rgba(77, 141, 245, 0.5);
+}
+
+select[name="data-selector"] option {
+  background-color: #1e3a5f;
+  color: #ffffff; 
+  width: 500px;
 }

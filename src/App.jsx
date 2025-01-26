@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
 import SearchBar from "./components/SearchBar";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
-import { useUnixToLocalTimeContext } from "./components/context/UnixToLocalTime/useUnixToLocalTimeContext";
-import { useConvertToCelsiusContext } from "./components/context/ConvertToCelsius/useConvertToCelsiusContext";
+import { useUnixToLocalTimeContext } from "./context/UnixToLocalTime/useUnixToLocalTimeContext";
+import { useConvertToCelsiusContext } from "./context/ConvertToCelsius/useConvertToCelsiusContext";
 import "./App.css";
 
 function App() {
@@ -76,6 +76,7 @@ function App() {
       </div>
       <h1>Five Days Forecast</h1>
       <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
+     
     </>
   );
 }
