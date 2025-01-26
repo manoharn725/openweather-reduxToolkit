@@ -30,6 +30,7 @@ const WeatherForecastCrad = ({ lat, lon }) => {
 
   return (
     <>
+    <h1>Five Days Forecast</h1>
       <select
         value={selectedDay}
         onChange={(e) => setSelectedDay(e.target.value)}
