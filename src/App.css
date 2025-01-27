@@ -1,20 +1,33 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 0;
   width: 100%;
+  
+}
+.app {
+  height: 750px;
+  /* height: calc(100dvh - 2rem - 2rem); */
+  height: calc(100dvh - 2rem - 2rem );
+  background-color: #f0a4a4;
 }
 /* General Header Styling */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1e3a5f; /* Dark blue */
+  background-color: #f0a4a4;
   padding: 10px 20px;
   color: white;
   font-family: Arial, sans-serif;
 }
-
+.card__details {
+  height: calc(100% - 82px);
+  background-color: #ffe2e2;
+  display: flex;
+  gap: 20px;
+  overflow: scroll;
+}
 /* Weather Cards */
 .weather-cards {
   display: flex;
@@ -49,8 +62,3 @@
   cursor: pointer;
   font-size: 14px;
 }
-
-
-
-
-

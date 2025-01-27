@@ -4,12 +4,14 @@ import { useConvertToCelsiusContext } from "./context/ConvertToCelsius/useConver
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
+// import SunriseSunsetChart from "./components/SunriseSunSetChart";
 import "./App.css";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState();
   const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
-   const convertToCelsius = useConvertToCelsiusContext();
+  const convertToCelsius = useConvertToCelsiusContext();
+// console.log('current',data);
 
   const handleSubmit = (term) => {
     setSearchTerm(term);
@@ -18,7 +20,7 @@ function App() {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error: {isError.message}</p>;
   return (
-    <>
+    <div className="app">
       <header className="header">
         <SearchBar onFormSubmit={handleSubmit} />
         <div className="weather-cards">
@@ -29,12 +31,12 @@ function App() {
         </div>
       </header>
 
-  <div className="card__details">
-      <WeatherCard data={data} />
-
-      <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
+      <div className="card__details">
+        <WeatherCard data={data} />
+        {/* <SunriseSunsetChart sunrise="5:50" sunset="18:47" currentTime="14:30" /> */}
+        <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
       </div>
-    </>
+    </div>
   );
 }
 
