@@ -8,45 +8,56 @@
     width: 100%;
     height: auto;
     color: black;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
   }
   
   .location {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
   
   .temperature {
-    font-size: 48px;
+    font-size: 60px;
     font-weight: bold;
-    margin: 10px 0;
+    /* margin-top: 10px; */
     color: #f9a70e;
   }
   
-  .description {
-    font-size: 18px;
+  .feels__like {
+    font-size: 13px;
     /* color: #e5e5e5; */
     margin-bottom: 20px;
   }
   
-  .icon {
-    width: 80px;
-    height: 80px;
-    margin: 10px auto;
+  .weather__card--icon {
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
     filter: brightness(0.8);
    
   }
   
   .details {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    text-align: left;
     color: black;
   }
   
   .detail {
     font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e4e4e4;
+    /* gap: 10px; */
+    margin: 0 auto;
+    min-width: 220px;
+  }
+  .detail span{
+
   }
   
   .sun-info {
