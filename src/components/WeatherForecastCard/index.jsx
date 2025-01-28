@@ -8,7 +8,7 @@ const WeatherForecastCrad = ({ lat, lon }) => {
   const { data } = useGetFivedayWeatherForecastQuery({ lat, lon });
   // console.log(data?.list?.map((d) => console.log(d)));
   // console.log('lat:',lat, 'lon:',lon);
-  const { convertUnixToFormattedDate, convertTo12HoursFormate } =
+  const { convertUnixToFormattedDate, convertUnixTo12HoursFormate } =
     useUnixToLocalTimeContext();
   const convertToCelsius = useConvertToCelsiusContext();
 
@@ -86,10 +86,10 @@ const WeatherForecastCrad = ({ lat, lon }) => {
           // </div>
           <div className="weather-forecast-card" key={index}>
             <div className="weather-forecast-card--date">
-              {convertUnixToFormattedDate(data?.dt)}
+              {/* {convertUnixToFormattedDate(data?.dt)} */}
               <span>
                 {" "}
-                {convertTo12HoursFormate(data?.dt_txt.split(" ")[1])}
+                {convertUnixTo12HoursFormate(data?.dt_txt.split(" ")[1])}
               </span>
               
             </div>
@@ -98,11 +98,11 @@ const WeatherForecastCrad = ({ lat, lon }) => {
             <span>🌡️{convertToCelsius(data?.main?.temp_max)}
             °C</span>
               <span>
-                ❄️{convertToCelsius(data?.main?.temp_min)}
+              🌡{convertToCelsius(data?.main?.temp_min)}
                 °C
               </span>
               <span>💨{data?.wind?.speed} m/s</span>
-              <span>🛣️{data?.main?.humidity}%</span>
+              <span>🫧{data?.main?.humidity}%</span>
             </div>
             <img
               src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}

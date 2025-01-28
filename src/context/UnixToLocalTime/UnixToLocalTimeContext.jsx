@@ -17,7 +17,7 @@ export const UnixToLocalTimeContextProvider = ({ children }) => {
     return date.toUTCString().split(" ").splice(0, 4).join(" ");
   };
 
-  const convertTo12HoursFormate = (time24) => {
+  const convertUnixTo12HoursFormate = (time24) => {
     const [hours, minutes] = time24.split(":").map(Number);
     const period = hours >= 12 ? "PM" : "AM";
     const hours12 = hours % 12 || 12; // Convert 0 to 12 for midnight
@@ -28,7 +28,7 @@ export const UnixToLocalTimeContextProvider = ({ children }) => {
   };
   return (
     <UnixToLocalTimeContext.Provider
-      value={{ convertUnixToLocalTime, convertUnixToFormattedDate, convertTo12HoursFormate }}
+      value={{ convertUnixToLocalTime, convertUnixToFormattedDate, convertUnixTo12HoursFormate }}
     >
       {children}
     </UnixToLocalTimeContext.Provider>
