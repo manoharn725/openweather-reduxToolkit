@@ -10,7 +10,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState();
   const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
 
-
   const handleSubmit = (term) => {
     setSearchTerm(term);
   };
@@ -21,17 +20,21 @@ function App() {
     <div className="app">
       <header className="header">
         <SearchBar onFormSubmit={handleSubmit} />
-        <div className="weather-cards">
-          <div className="app-theme">
-            <span>Theme</span>
-          </div>
+        <div className="app-theme">
+          <span>Theme</span>
         </div>
       </header>
 
       <div className="card__details">
         <WeatherCard data={data} />
-        {/* <SunriseSunsetChart sunrise="5:50" sunset="18:47" currentTime="14:30" /> */}
-        <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
+        <div className="app__right-side">
+          {/* <SunriseSunsetChart
+            sunrise="5:50"
+            sunset="18:47"
+            currentTime="14:30"
+          /> */}
+          <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
+        </div>
       </div>
     </div>
   );
