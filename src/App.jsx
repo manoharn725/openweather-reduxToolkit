@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
-import { useConvertToCelsiusContext } from "./context/ConvertToCelsius/useConvertToCelsiusContext";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
@@ -10,8 +9,7 @@ import "./App.css";
 function App() {
   const [searchTerm, setSearchTerm] = useState();
   const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
-  const convertToCelsius = useConvertToCelsiusContext();
-// console.log('current',data);
+
 
   const handleSubmit = (term) => {
     setSearchTerm(term);
@@ -24,9 +22,8 @@ function App() {
       <header className="header">
         <SearchBar onFormSubmit={handleSubmit} />
         <div className="weather-cards">
-          <div className="weather-card">
-            <span>{data?.name}</span>
-            <span>🌤 {convertToCelsius(data?.main?.temp)}°C</span>
+          <div className="app-theme">
+            <span>Theme</span>
           </div>
         </div>
       </header>
