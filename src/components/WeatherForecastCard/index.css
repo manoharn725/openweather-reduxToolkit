@@ -1,6 +1,6 @@
 .weather-forecast-card__wrapper {
-  width: calc(100% - 20px);
-  padding-right: 20px;
+  width: 100%;
+  height: 414px;
 }
 .weather-forecast-card__upcoming-days{
   color: black;
@@ -8,7 +8,7 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 .weather-forecast-card__upcoming-days > span{
   background-color: #fafafc;

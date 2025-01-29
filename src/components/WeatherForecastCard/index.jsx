@@ -15,7 +15,6 @@ const WeatherForecastCrad = ({ lat, lon }) => {
   const currentDate = new Date();
   const numberOfDays = [0, 1, 2, 3, 4, 5];
 
-  // Add days
   const upComingDays = numberOfDays.map((day) => {
     const date = new Date(currentDate);
     // console.log("date checking:", date)
@@ -28,7 +27,7 @@ const WeatherForecastCrad = ({ lat, lon }) => {
   const filteredData = data?.list?.filter(
     (data) => convertUnixToFormattedDate(data?.dt) === selectedDay
   );
-  // console.log(filteredData);
+
   return (
     <div className="weather-forecast-card__wrapper">
      {/* <select
