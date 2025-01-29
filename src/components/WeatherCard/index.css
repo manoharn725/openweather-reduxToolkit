@@ -30,7 +30,7 @@
   font-size: 60px;
   font-weight: bold;
   /* margin-top: 10px; */
-  color: #E6A157;
+  color: #FFCE46;
 }
 
 .feels__like {
@@ -62,8 +62,8 @@
   margin: 0 auto;
   min-width: 220px;
 }
-.detail span {
-}
+/* .detail span {
+} */
 
 .sun-info {
   display: flex;
