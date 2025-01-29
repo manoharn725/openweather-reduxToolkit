@@ -31,7 +31,7 @@ const WeatherForecastCrad = ({ lat, lon }) => {
   // console.log(filteredData);
   return (
     <div className="weather-forecast-card__wrapper">
-      <select
+     {/* <select
         value={selectedDay}
         onChange={(e) => setSelectedDay(e.target.value)}
         name="data-selector"
@@ -39,51 +39,15 @@ const WeatherForecastCrad = ({ lat, lon }) => {
         {upComingDays.map((day, index) => (
           <option key={index}>{day}</option>
         ))}
-      </select>
+      </select>  */}
+      <div className="weather-forecast-card__upcoming-days">
+        {upComingDays.map((day, index) => (
+          <span className={`${selectedDay === day ? 'active':'inactive'}`} key={index} onClick={() => setSelectedDay(day)}>{day}</span>
+        ))}
+        </div>
       <div className="weather-forecast-card__container">
+        
         {filteredData?.map((data, index) => (
-          // <div className="weather-forecast-card" key={index}>
-          //   <h3>{convertUnixToFormattedDate(data?.dt)}</h3>
-          //   <h3>he{convertUnixToLocalTime(data?.dt)}</h3>
-          //   <p>
-          //     <strong>Date:</strong> {data?.dt_txt}
-          //   </p>
-          //   <p>
-          //     <strong>Temperature:</strong> {convertToCelsius(data?.main?.temp)}
-          //     °C
-          //   </p>
-          //   <p>
-          //     <strong>Feels Like:</strong>{" "}
-          //     {convertToCelsius(data?.main?.feels_like)}°C
-          //   </p>
-          //   <p>
-          //     <strong>Min Temp:</strong>{" "}
-          //     {convertToCelsius(data?.main?.temp_min)}
-          //     °C
-          //   </p>
-          //   <p>
-          //     <strong>Max Temp:</strong>{" "}
-          //     {convertToCelsius(data?.main?.temp_max)}
-          //     °C
-          //   </p>
-          //   <p>
-          //     <strong>Humidity:</strong> {data?.main?.humidity}%
-          //   </p>
-          //   <p>
-          //     <strong>Weather:</strong> {data?.weather[0].description}
-          //   </p>
-
-          //   <p>
-          //     <strong>Wind Speed:</strong> {data?.wind?.speed} m/s
-          //   </p>
-          //   <p>
-          //     <strong>Wind Gust:</strong> {data?.wind?.gust} m/s
-          //   </p>
-          //   <p>
-          //     <strong>Visibility:</strong> {data?.visibility / 1000} km
-          //   </p>
-
-          // </div>
           <div className="weather-forecast-card" key={index}>
             <div className="weather-forecast-card--date">
               {/* {convertUnixToFormattedDate(data?.dt)} */}
@@ -91,24 +55,25 @@ const WeatherForecastCrad = ({ lat, lon }) => {
                 {" "}
                 {convertUnixTo12HoursFormate(data?.dt_txt.split(" ")[1])}
               </span>
-              
             </div>
             <div className="weather-forecast-card--divider">
-            <div className="weather-forecast-card--temp">
-            <span>🌡️{convertToCelsius(data?.main?.temp_max)}
-            °C</span>
-              <span>
-              🌡{convertToCelsius(data?.main?.temp_min)}
-                °C
-              </span>
-              <span>💨{data?.wind?.speed} m/s</span>
-              <span>🫧{data?.main?.humidity}%</span>
-            </div>
-            <img
-              src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
-              alt=""
-              className="weather-forecast-card--icon"
-            />
+              <div className="weather-forecast-card--temp">
+                <span>
+                  🌡️{convertToCelsius(data?.main?.temp_max)}
+                  °C
+                </span>
+                <span>
+                  🌡{convertToCelsius(data?.main?.temp_min)}
+                  °C
+                </span>
+                <span>💨{data?.wind?.speed} m/s</span>
+                <span>🫧{data?.main?.humidity}%</span>
+              </div>
+              <img
+                src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
+                alt=""
+                className="weather-forecast-card--icon"
+              />
             </div>
             <div className="weather-forecast-card--description">
               {data?.weather[0].description}

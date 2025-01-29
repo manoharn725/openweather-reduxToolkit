@@ -1,12 +1,39 @@
 .weather-forecast-card__wrapper {
- 
+  width: calc(100% - 20px);
+  padding-right: 20px;
+}
+.weather-forecast-card__upcoming-days{
+  color: black;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.weather-forecast-card__upcoming-days > span{
+  background-color: #fafafc;
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.weather-forecast-card__upcoming-days > span:hover{
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.weather-forecast-card__upcoming-days > span.active{
+  background-color: #ffe08a;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 .weather-forecast-card__container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: 30px;
+  margin-top: 20px;
   gap: 20px;
+  
 }
 
 /* testing */
@@ -18,7 +45,9 @@
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  backdrop-filter: blur(10px);
 }
+
 
 .weather-forecast-card .weather-forecast-card--date {
   font-size: 14px;
