@@ -7,16 +7,16 @@ const WeatherCard = ({ data }) => {
   const { convertUnixToLocalTime, convertUnixToFormattedDate } =
     useUnixToLocalTimeContext();
   const convertToCelsius = useConvertToCelsiusContext();
-  const getcurrentDay = useGetCurrentDayContext();
-  console.log('check',getcurrentDay())
-// const currentDate = new Date()
-// console.log(currentDate, currentDate.getDay(),  currentDate.getMinutes(), currentDate.getSeconds())
+  const {getcurrentDay, getCurrentMonth, currentTime} = useGetCurrentDayContext();
+
   return (
-    <div className="weather-container" key={data?.id}>
-      <div className="location">
-        {data?.name}, {data?.sys?.country}
+    <div className="weather__card--container" key={data?.id}>
+        <div></div>
+      <div className="weather__card--location">
+        <span>{data?.name}, {data?.sys?.country}</span>
+        <span>{getCurrentMonth}</span>
       </div>
-      <div>{getcurrentDay()}</div>
+      <div className="weather__card--time">{getcurrentDay}, {currentTime}</div>
       <img
         className="weather__card--icon"
         src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
