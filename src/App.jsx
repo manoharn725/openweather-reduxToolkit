@@ -4,14 +4,20 @@ import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
 // import SunriseSunsetChart from "./components/SunriseSunSetChart";
+import TemperatureGraph from "./components/TemperatureGraph";
 import "./App.css";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState();
+  const [graphData, setGraphData] = useState([]);
   const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
 
   const handleSubmit = (term) => {
     setSearchTerm(term);
+  };
+ 
+  const updateGraphData = (dataForGraph) => {
+    setGraphData(dataForGraph);
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -33,8 +39,12 @@ function App() {
             sunset="18:47"
             currentTime="14:30"
           /> */}
-          <div></div>
-          <WeatherForecastCrad lat={data?.coord?.lat} lon={data?.coord?.lon} />
+          <TemperatureGraph forecastData={graphData} />
+          <WeatherForecastCrad
+            dataForGraph={updateGraphData}
+            lat={data?.coord?.lat}
+            lon={data?.coord?.lon}
+          />
         </div>
       </div>
     </div>
