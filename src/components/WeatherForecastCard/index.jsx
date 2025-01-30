@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetFivedayWeatherForecastQuery } from "../../store/api/currentWeatherApi";
 import { useUnixToLocalTimeContext } from "../../context/UnixToLocalTime/useUnixToLocalTimeContext";
 import { useConvertToCelsiusContext } from "../../context/ConvertToCelsius/useConvertToCelsiusContext";
 import "./index.css";
 
-const WeatherForecastCrad = ({ lat, lon }) => {
+const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
   const { data } = useGetFivedayWeatherForecastQuery({ lat, lon });
   // console.log(data?.list?.map((d) => console.log(d)));
   // console.log('lat:',lat, 'lon:',lon);
   const { convertUnixToFormattedDate, convertUnixTo12HoursFormate } =
     useUnixToLocalTimeContext();
-  const convertToCelsius = useConvertToCelsiusContext();
+  const  { convertToCelsius } = useConvertToCelsiusContext();
 
   const currentDate = new Date();
   const numberOfDays = [0, 1, 2, 3, 4, 5];
@@ -27,10 +27,16 @@ const WeatherForecastCrad = ({ lat, lon }) => {
   const filteredData = data?.list?.filter(
     (data) => convertUnixToFormattedDate(data?.dt) === selectedDay
   );
+  
+  useEffect(() => {
+    if (dataForGraph) {
+      dataForGraph(filteredData);
+    }
+  }, [selectedDay]);
 
   return (
     <div className="weather-forecast-card__wrapper">
-     {/* <select
+      {/* <select
         value={selectedDay}
         onChange={(e) => setSelectedDay(e.target.value)}
         name="data-selector"
@@ -41,11 +47,16 @@ const WeatherForecastCrad = ({ lat, lon }) => {
       </select>  */}
       <div className="weather-forecast-card__upcoming-days">
         {upComingDays.map((day, index) => (
-          <span className={`${selectedDay === day ? 'active':'inactive'}`} key={index} onClick={() => setSelectedDay(day)}>{day}</span>
+          <span
+            className={`${selectedDay === day ? "active" : "inactive"}`}
+            key={index}
+            onClick={() => setSelectedDay(day)}
+          >
+            {day}
+          </span>
         ))}
-        </div>
+      </div>
       <div className="weather-forecast-card__container">
-        
         {filteredData?.map((data, index) => (
           <div className="weather-forecast-card" key={index}>
             <div className="weather-forecast-card--date">
