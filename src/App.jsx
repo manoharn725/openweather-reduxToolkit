@@ -3,7 +3,7 @@ import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
-// import SunriseSunsetChart from "./components/SunriseSunSetChart";
+import HumidityChart from "./components/HumidityChart";
 import TemperatureGraph from "./components/TemperatureGraph";
 import "./App.css";
 
@@ -34,12 +34,12 @@ function App() {
       <div className="card__details">
         <WeatherCard data={data} />
         <div className="app__right-side">
-          {/* <SunriseSunsetChart
-            sunrise="5:50"
-            sunset="18:47"
-            currentTime="14:30"
-          /> */}
+          <div className="app__right-side--top-section">
+          
           <TemperatureGraph forecastData={graphData} />
+          <HumidityChart forecastData={graphData} />
+          </div>
+         
           <WeatherForecastCrad
             dataForGraph={updateGraphData}
             lat={data?.coord?.lat}

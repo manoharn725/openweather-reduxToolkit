@@ -1,0 +1,7 @@
+.chart-bar{
+  background-color: #fcfcfc;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: end;
+}

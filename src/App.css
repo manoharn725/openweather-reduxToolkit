@@ -47,3 +47,7 @@
   width: calc(100% - 20px);
   height: calc(100% - 20px - 20px);
 }
+.app__right-side--top-section{
+  display: flex;
+  justify-content: space-between;
+}
