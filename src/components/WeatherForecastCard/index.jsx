@@ -10,7 +10,7 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
   // console.log('lat:',lat, 'lon:',lon);
   const { convertUnixToFormattedDate, convertUnixTo12HoursFormate } =
     useUnixToLocalTimeContext();
-  const  { convertToCelsius } = useConvertToCelsiusContext();
+  const { convertToCelsius } = useConvertToCelsiusContext();
 
   const currentDate = new Date();
   const numberOfDays = [0, 1, 2, 3, 4, 5];
@@ -27,12 +27,12 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
   const filteredData = data?.list?.filter(
     (data) => convertUnixToFormattedDate(data?.dt) === selectedDay
   );
-  
+
   useEffect(() => {
     if (dataForGraph) {
       dataForGraph(filteredData);
     }
-  }, [selectedDay]);
+  }, [data, selectedDay]);
 
   return (
     <div className="weather-forecast-card__wrapper">
