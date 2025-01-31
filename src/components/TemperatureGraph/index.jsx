@@ -34,7 +34,7 @@ const TemperatureGraph = ({ forecastData = [] }) => {
   const temperatures = forecastData?.map((item) =>
     convertToCelsius(item?.main?.temp)
   ); 
-  
+
   // Chart.js data
   const data = {
     labels,
@@ -117,7 +117,7 @@ const TemperatureGraph = ({ forecastData = [] }) => {
   return (
     <div
       className="temperature-graph"
-      style={{ height: "190px", width: "500px" }}
+      style={{ height: "190px", width: "460px" }}
     >
       <Line data={data} options={options} />
     </div>
