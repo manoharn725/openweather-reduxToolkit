@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const ConvertToCelsiusContext = createContext();
+const ConvertToCelsiusContext = createContext();
 
 export const ConvertToCelsiusProvider = ({ children }) => {
   const convertToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
@@ -10,3 +10,5 @@ export const ConvertToCelsiusProvider = ({ children }) => {
     </ConvertToCelsiusContext.Provider>
   );
 };
+
+export default ConvertToCelsiusContext;

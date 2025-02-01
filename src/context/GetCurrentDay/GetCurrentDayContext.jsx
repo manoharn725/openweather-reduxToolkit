@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useState } from "react";
 
-export const GetCurrentDayContext = createContext();
+const GetCurrentDayContext = createContext();
 
 export const GetCurrentDayProvider = ({ children }) => {
   const getcurrentDay = useMemo(() => {
@@ -67,3 +67,5 @@ export const GetCurrentDayProvider = ({ children }) => {
     </GetCurrentDayContext.Provider>
   );
 };
+
+export default GetCurrentDayContext;

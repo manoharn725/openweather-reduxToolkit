@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const UnixToLocalTimeContext = createContext();
+const UnixToLocalTimeContext = createContext();
 
 export const UnixToLocalTimeContextProvider = ({ children }) => {
   const convertUnixToLocalTime = (unixTimestamp = 1737854757) => {
@@ -34,3 +34,5 @@ export const UnixToLocalTimeContextProvider = ({ children }) => {
     </UnixToLocalTimeContext.Provider>
   );
 };
+
+export default UnixToLocalTimeContext;
