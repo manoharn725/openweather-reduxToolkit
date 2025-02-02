@@ -1,5 +1,6 @@
 import { useGetCitySuggestionsQuery } from "../../store/api/currentWeatherApi";
 import { useState } from "react";
+
 import "./index.css";
 
 const SearchBar = ({ onFormSubmit }) => {
@@ -18,31 +19,27 @@ const SearchBar = ({ onFormSubmit }) => {
     setTerm(city);
     onFormSubmit(term);
     setShowSuggestions(false);
-    setTerm('')
+    setTerm("");
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     onFormSubmit(term);
-    setShowSuggestions(false); 
-    setTerm('')
+    setShowSuggestions(false);
+    setTerm("");
   };
 
   return (
-    <div className="search-container">
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="Search for location"
-          className="search-input"
-          value={term}
-          onChange={handleOnChange}
-          onFocus={() => setShowSuggestions(term.length > 0)}
-        />
-        <button className="search-button" type="submit">
-          <i className="fa fa-search"></i>
-        </button>
-      </form>
+    <form className="search-container" onSubmit={handleFormSubmit}>
+      <input
+        type="text"
+        placeholder="Search for location"
+        className="search-input"
+        value={term}
+        onChange={handleOnChange}
+        onFocus={() => setShowSuggestions(term.length > 0)}
+      />
       {showSuggestions && cities.length > 0 && (
         <ul className="suggestions-dropdown">
           {cities.map((city, index) => (
@@ -56,7 +53,7 @@ const SearchBar = ({ onFormSubmit }) => {
           ))}
         </ul>
       )}
-    </div>
+    </form>
   );
 };
 
