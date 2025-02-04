@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   background-color: #fafafc;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid #ffefc1;
 }
 
@@ -14,12 +14,12 @@
   color: #000000;
   padding: 10px 15px;
   font-size: 14px;
-  width: 260px;
+  width: 270px;
 }
-.search-input:focus{
+/* .search-input:focus{
   background-color: #fff7e0;
-  border-radius: 20px;
-}
+  border-radius: 8px;
+} */
 .search-container {
   position: relative;
 }
@@ -29,18 +29,19 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #fff7e0;
-  border: 1px solid #ccc;
-  border-top: 0px;
+  background-color: #fcfcfc;
+  border: 1px solid #dddddd;
+  /* border-top: 0px; */
   border-radius: 8px;
-  border-top-left-radius: 0%;
-  border-top-right-radius: 0px;
+  /* border-top-left-radius: 0%;
+  border-top-right-radius: 0px; */
   max-height: 150px;
   overflow-y: auto;
   z-index: 10;
   list-style: none;
   padding: 0;
-  margin: 2px 0 0 0;
+  margin: -4px 0 0px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .suggestion-item {
