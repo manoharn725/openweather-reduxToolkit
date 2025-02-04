@@ -12,7 +12,6 @@ const WeatherCard = ({ data }) => {
 
   return (
     <div className="weather__card--container" key={data?.id}>
-      <div></div>
       <div className="weather__card--location">
         <span>
           {data?.name}, {data?.sys?.country}

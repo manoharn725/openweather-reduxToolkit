@@ -41,7 +41,7 @@ const Modal = ({ onClose, developer = [] }) => {
             ))}
            </div>
            <div className="design-refered">
-           <a href={`${developer.refer}`} target="_blank" className="bold skill">Weather App Design Referenced 👆</a> 
+           <a href={`${developer.refer}`} target="_blank" className="bold skill">Design Referenced 👆</a> 
            <a href={`${developer.portfolio}`} target="blank" className="bold skill">Personal Portfolio 👆</a> 
            </div>
 

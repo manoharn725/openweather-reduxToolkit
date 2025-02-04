@@ -16,6 +16,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+/* to avoid height of date buttons */
+  height: 21px;
+  overflow-y: hidden;
+  text-align: center;
 }
 .weather-forecast-card__upcoming-days > span:hover{
   background-color: #ffffff;
@@ -38,7 +42,7 @@
 
 /* testing */
 .weather-forecast-card {
-  width: 200px;
+  flex-grow: 1;
   padding: 10px 5px;
   background: #fafafc;
   /* background-color: #ffffffcc; */
@@ -94,7 +98,6 @@ select[name="data-selector"] {
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease;
-   margin: 20px 0px 0px;
 }
 
 select[name="data-selector"]:hover {
@@ -110,4 +113,15 @@ select[name="data-selector"] option {
   background-color: #fafafc;
   color: #000000;
   width: 500px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .weather-forecast-card__wrapper {
+    height: unset;
+  }
+}
+@media only screen and (max-width:768px){
+  .weather-forecast-card__upcoming-days > span {
+    padding: 5px 5px;
+  }
 }

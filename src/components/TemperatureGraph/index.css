@@ -1,5 +1,21 @@
-.temperature-graph{
-    background-color: #fcfcfc;
-    padding: 15px 15px;
-    border-radius: 8px;
+.temperature-graph {
+  background-color: #fcfcfc;
+  padding: 15px 15px;
+  border-radius: 8px;
+  width: 460px;
+  height: 190px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .temperature-graph {
+    min-width: calc(100% - 15px - 15px);
+  }
+}
+
+@media only screen and (max-width: 866px) {
+  .temperature-graph {
+    max-width: 100px;
+    height: 190px;
+    min-width: calc(100% - 15px - 15px);
+  }
 }

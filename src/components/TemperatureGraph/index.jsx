@@ -30,10 +30,10 @@ const TemperatureGraph = ({ forecastData = [] }) => {
 
   const labels = forecastData?.map((item) =>
     convertUnixTo12HoursFormate(item?.dt_txt.split(" ")[1])
-  ); 
+  );
   const temperatures = forecastData?.map((item) =>
     convertToCelsius(item?.main?.temp)
-  ); 
+  );
 
   // Chart.js data
   const data = {
@@ -115,10 +115,7 @@ const TemperatureGraph = ({ forecastData = [] }) => {
   };
 
   return (
-    <div
-      className="temperature-graph"
-      style={{ height: "190px", width: "460px" }}
-    >
+    <div className="temperature-graph">
       <Line data={data} options={options} />
     </div>
   );
