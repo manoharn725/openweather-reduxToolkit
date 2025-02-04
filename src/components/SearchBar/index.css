@@ -5,6 +5,7 @@
   background-color: #fafafc;
   border-radius: 8px;
   border: 1px solid #ffefc1;
+  width: 300px;
 }
 
 .search-input {
@@ -14,7 +15,7 @@
   color: #000000;
   padding: 10px 15px;
   font-size: 14px;
-  width: 270px;
+  width: calc(100% - 15px - 15px);
 }
 /* .search-input:focus{
   background-color: #fff7e0;
