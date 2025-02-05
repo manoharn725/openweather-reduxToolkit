@@ -175,12 +175,15 @@
 
 @media only screen and (max-width: 768px) {
   .design-refered > a {
-    font-size: 11px;
+    font-size: 12px;
   }
   .skill {
     font-size: 10px;
   }
   .modal__box--developer-image {
     width: 5rem;
+  }
+  .modal__box{
+    padding: unset;
   }
 }
