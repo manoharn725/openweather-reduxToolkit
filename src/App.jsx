@@ -77,7 +77,6 @@ function App() {
           </div>
           {isModalOpen ? (
             <Modal
-              isDevelopers={true}
               developer={developer}
               onClose={onClose}
             />
