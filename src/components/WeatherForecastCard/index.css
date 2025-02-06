@@ -120,8 +120,11 @@ select[name="data-selector"] option {
     height: unset;
   }
 }
-@media only screen and (max-width:768px){
+@media only screen and (max-width:500px){
   .weather-forecast-card__upcoming-days > span {
     padding: 5px 5px;
+  }
+  .weather-forecast-card__upcoming-days {
+    gap: 5px;
   }
 }
