@@ -69,11 +69,11 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
             <div className="weather-forecast-card--divider">
               <div className="weather-forecast-card--temp">
                 <span>
-                  🌡️{convertToCelsius(data?.main?.temp_max)}
+                  🌡{convertToCelsius(data?.main?.temp_max)}
                   °C
                 </span>
                 <span>
-                  🌡{convertToCelsius(data?.main?.temp_min)}
+                🌡️{convertToCelsius(data?.main?.temp_min)}
                   °C
                 </span>
                 <span>💨{data?.wind?.speed} m/s</span>
