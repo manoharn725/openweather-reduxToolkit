@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { useGetFivedayWeatherForecastQuery } from "../../store/api/currentWeatherApi";
+import { fetchFivedayWeatherForecast } from "../../store/asyncThunk/weatherApi";
 import { useUnixToLocalTimeContext } from "../../context/UnixToLocalTime/useUnixToLocalTimeContext";
 import { useConvertToCelsiusContext } from "../../context/ConvertToCelsius/useConvertToCelsiusContext";
+import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
 
 const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
-  const { data } = useGetFivedayWeatherForecastQuery({ lat, lon });
-  // console.log(data?.list?.map((d) => console.log(d)));
-  // console.log('lat:',lat, 'lon:',lon);
+  const dispatch = useDispatch();
+  const { fivedayWeatherForecast } = useSelector((state) => state.weather);
+  useEffect(() => {
+    if (lat && lon) {
+      dispatch(fetchFivedayWeatherForecast({ lat, lon }));
+    }
+  }, [lat, lon, dispatch]);
+
   const { convertUnixToFormattedDate, convertUnixTo12HoursFormate } =
     useUnixToLocalTimeContext();
   const { convertToCelsius } = useConvertToCelsiusContext();
@@ -17,14 +23,14 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
 
   const upComingDays = numberOfDays.map((day) => {
     const date = new Date(currentDate);
-    // console.log("date checking:", date)
+
     date.setDate(currentDate.getDate() + day);
     return date.toUTCString().split(" ").splice(0, 4).join(" ");
   });
 
   const [selectedDay, setSelectedDay] = useState(upComingDays[0]);
 
-  const filteredData = data?.list?.filter(
+  const filteredData = fivedayWeatherForecast?.list?.filter(
     (data) => convertUnixToFormattedDate(data?.dt) === selectedDay
   );
 
@@ -32,7 +38,7 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
     if (dataForGraph) {
       dataForGraph(filteredData);
     }
-  }, [data, selectedDay]);
+  }, [fivedayWeatherForecast, selectedDay]);
 
   return (
     <div className="weather-forecast-card__wrapper">
@@ -73,7 +79,7 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
                   °C
                 </span>
                 <span>
-                🌡️{convertToCelsius(data?.main?.temp_min)}
+                  🌡️{convertToCelsius(data?.main?.temp_min)}
                   °C
                 </span>
                 <span>💨{data?.wind?.speed} m/s</span>

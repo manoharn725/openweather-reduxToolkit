@@ -1,13 +1,21 @@
-import { useGetCitySuggestionsQuery } from "../../store/api/currentWeatherApi";
-import { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCitySuggestions } from "../../store/asyncThunk/weatherApi";
+import { useEffect, useState } from "react";
 import "./index.css";
 
 const SearchBar = ({ onFormSubmit }) => {
   const [term, setTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const { data = [] } = useGetCitySuggestionsQuery(term);
-  const cities = data.map((data) => data.name);
+
+  const dispatch = useDispatch();
+  const { citySuggestions = [] } = useSelector((state) => state.weather);
+  const cities = citySuggestions.map((data) => data.name);
+
+  useEffect(() => {
+    if (term.length > 0) {
+      dispatch(fetchCitySuggestions(term));
+    }
+  }, [showSuggestions, dispatch, term]);
 
   const handleOnChange = (e) => {
     const value = e.target.value;

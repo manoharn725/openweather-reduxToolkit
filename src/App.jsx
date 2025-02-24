@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useGetCurrentWeatherQuery } from "./store/api/currentWeatherApi";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCurrentWeather } from "./store/asyncThunk/weatherApi";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForecastCrad from "./components/WeatherForecastCard";
@@ -10,10 +11,21 @@ import ManoharImage from "./assets/manohar.jpg";
 import "./App.css";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const [graphData, setGraphData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, isLoading, isError } = useGetCurrentWeatherQuery(searchTerm);
+
+  const dispatch = useDispatch();
+  const { currentWeather, isLoading, isError } = useSelector(
+    (state) => state.weather
+  );
+  console.log("current", currentWeather);
+
+  useEffect(() => {
+    if (searchTerm) {
+      dispatch(fetchCurrentWeather(searchTerm));
+    }
+  }, []);
 
   const handleSubmit = (term) => {
     setSearchTerm(term);
@@ -75,19 +87,12 @@ function App() {
               alt="Developer"
             />
           </div>
-          {isModalOpen ? (
-            <Modal
-              developer={developer}
-              onClose={onClose}
-            />
-          ) : (
-            ""
-          )}
+          {isModalOpen ? <Modal developer={developer} onClose={onClose} /> : ""}
         </div>
       </header>
 
       <div className="card__details">
-        <WeatherCard data={data} />
+        <WeatherCard data={currentWeather} />
 
         <div className="app__right-side">
           <div className="app__right-side--top-section">
@@ -97,8 +102,8 @@ function App() {
 
           <WeatherForecastCrad
             dataForGraph={updateGraphData}
-            lat={data?.coord?.lat}
-            lon={data?.coord?.lon}
+            lat={currentWeather?.coord?.lat}
+            lon={currentWeather?.coord?.lon}
           />
         </div>
       </div>

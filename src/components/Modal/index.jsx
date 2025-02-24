@@ -26,25 +26,45 @@ const Modal = ({ onClose, developer = [] }) => {
               <span className="skill">{developer.name}</span>
             </div>
             <div className="modal__box--developer-designation">
-              <span className="bold skill">Role :</span> <span className="skill">{developer.role}</span>
+              <span className="bold skill">Role :</span>{" "}
+              <span className="skill">{developer.role}</span>
             </div>
-            <span className="bold skill">The tools I used to build this app :</span>
-           <div className="skills">
-            {developer.skills.map((skill, index)=> (
-                <span className="skill" key={index}>{skill}</span>
-            ))}
-           </div>
-           <span className="bold skill">The hooks I used to build this app :</span>
-           <div className="skills">
-            {developer.hooks.map((hook, index)=> (
-                <span className="skill" key={index}>{hook}</span>
-            ))}
-           </div>
-           <div className="design-refered">
-           <a href={`${developer.refer.url}`} target="_blank" className="bold skill">{developer.refer.title}</a> 
-           <a href={`${developer.portfolio.url}`} target="blank" className="bold skill">{developer.portfolio.title}</a> 
-           </div>
-
+            <span className="bold skill">
+              The tools I used to build this app :
+            </span>
+            <div className="skills">
+              {developer.skills.map((skill, index) => (
+                <span className="skill" key={index}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+            <span className="bold skill">
+              The hooks I used to build this app :
+            </span>
+            <div className="skills">
+              {developer.hooks.map((hook, index) => (
+                <span className="skill" key={index}>
+                  {hook}
+                </span>
+              ))}
+            </div>
+            <div className="design-refered">
+              <a
+                href={`${developer.refer.url}`}
+                target="_blank"
+                className="bold skill"
+              >
+                {developer.refer.title}
+              </a>
+              <a
+                href={`${developer.portfolio.url}`}
+                target="blank"
+                className="bold skill"
+              >
+                {developer.portfolio.title}
+              </a>
+            </div>
           </div>
         </div>
       </div>

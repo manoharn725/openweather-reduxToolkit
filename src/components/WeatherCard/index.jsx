@@ -1,7 +1,7 @@
 import { useUnixToLocalTimeContext } from "../../context/UnixToLocalTime/useUnixToLocalTimeContext";
 import { useConvertToCelsiusContext } from "../../context/ConvertToCelsius/useConvertToCelsiusContext";
-import "./index.css";
 import { useGetCurrentDayContext } from "../../context/GetCurrentDay/useGetCurrentDayContext";
+import "./index.css";
 
 const WeatherCard = ({ data }) => {
   const { convertUnixToLocalTime, convertUnixToFormattedDate } =
