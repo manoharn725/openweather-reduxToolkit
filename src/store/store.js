@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { currentWeatherApi } from "./api/currentWeatherApi";
+import weatherReducer from "./slice/weatherSlice";
 
 export const store = configureStore({
   reducer: {
-    [currentWeatherApi.reducerPath]: currentWeatherApi.reducer,
+    weather: weatherReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(currentWeatherApi.middleware),
 });
