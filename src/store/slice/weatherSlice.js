@@ -6,7 +6,7 @@ import { fetchFivedayWeatherForecast } from "../asyncThunk/weatherApi";
 const initialState = {
   currentWeather: null,
   citySuggestions: [],
-  fiveDayWeatherForecast: null,
+  fivedayWeatherForecast: null,
   isLoading: false,
   isError: null,
 };
@@ -44,7 +44,7 @@ const weatherSlice = createSlice({
       })
       .addCase(fetchFivedayWeatherForecast.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.fiveDayWeatherForecast = action.payload;
+        state.fivedayWeatherForecast = action.payload;
       })
       .addCase(fetchFivedayWeatherForecast.rejected, (state, action) => {
         state.isLoading = false;
