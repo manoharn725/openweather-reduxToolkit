@@ -1,14 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCurrentWeather } from "../asyncThunk/weatherApi";
-import { fetchCitySuggestions } from "../asyncThunk/weatherApi";
-import { fetchFivedayWeatherForecast } from "../asyncThunk/weatherApi";
+import {
+  fetchCurrentWeather,
+  fetchCitySuggestions,
+  fetchFivedayWeatherForecast,
+} from "../asyncThunk/weatherApi";
 
 const initialState = {
-  currentWeather: null,
-  citySuggestions: [],
-  fivedayWeatherForecast: null,
-  isLoading: false,
-  isError: null,
+  currentWeather: {
+    data: null,
+    isLoading: false,
+    isError: null,
+  },
+  citySuggestions: {
+    data: [],
+    isLoading: false,
+    isError: null,
+  },
+  fivedayWeatherForecast: {
+    data: null,
+    isLoading: false,
+    isError: null,
+  },
 };
 const weatherSlice = createSlice({
   name: "weather",
@@ -18,37 +30,45 @@ const weatherSlice = createSlice({
     //async logic here
     builder
       .addCase(fetchCurrentWeather.pending, (state) => {
-        state.isLoading = true;
+        state.currentWeather.isLoading = true;
+        state.currentWeather.isError = null;
       })
       .addCase(fetchCurrentWeather.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.currentWeather = action.payload;
+        state.currentWeather.isLoading = false;
+        state.currentWeather.data = action.payload;
       })
       .addCase(fetchCurrentWeather.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = action.payload;
+        state.currentWeather.isLoading = false;
+        state.currentWeather.isError =
+          action.payload?.message || "Failed to fetch current weather";
       })
+
       .addCase(fetchCitySuggestions.pending, (state) => {
-        state.isLoading = true;
+        state.citySuggestions.isLoading = true;
+        state.citySuggestions.isError = null;
       })
       .addCase(fetchCitySuggestions.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.citySuggestions = action.payload;
+        state.citySuggestions.isLoading = false;
+        state.citySuggestions.data = action.payload;
       })
       .addCase(fetchCitySuggestions.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = action.payload;
+        state.citySuggestions.isLoading = false;
+        state.citySuggestions.isError =
+          action.payload?.message || "Failed to fetch city suggestions";
       })
+
       .addCase(fetchFivedayWeatherForecast.pending, (state) => {
-        state.isLoading = true;
+        state.fivedayWeatherForecast.isLoading = true;
+        state.fivedayWeatherForecast.isError = null;
       })
       .addCase(fetchFivedayWeatherForecast.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.fivedayWeatherForecast = action.payload;
+        state.fivedayWeatherForecast.isLoading = false;
+        state.fivedayWeatherForecast.data = action.payload;
       })
       .addCase(fetchFivedayWeatherForecast.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = action.payload;
+        state.fivedayWeatherForecast.isLoading = false;
+        state.fivedayWeatherForecast.isError =
+          action.payload?.message || "Failed to fetch forecast";
       });
   },
 });

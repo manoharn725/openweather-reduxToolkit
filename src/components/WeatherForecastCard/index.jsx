@@ -7,7 +7,7 @@ import "./index.css";
 
 const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
   const dispatch = useDispatch();
-  const { fivedayWeatherForecast } = useSelector((state) => state.weather);
+  const { data:fivedayWeatherForecast } = useSelector((state) => state.weather.fivedayWeatherForecast);
   useEffect(() => {
     if (lat && lon) {
       dispatch(fetchFivedayWeatherForecast({ lat, lon }));
@@ -87,7 +87,7 @@ const WeatherForecastCrad = ({ lat, lon, dataForGraph }) => {
               </div>
               <img
                 src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
-                alt=""
+                alt="Weather Icon"
                 className="weather-forecast-card--icon"
               />
             </div>

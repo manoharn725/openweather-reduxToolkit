@@ -16,7 +16,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 const HumidityChart = ({ forecastData = [] }) => {
   const { convertUnixTo12HoursFormate } = useUnixToLocalTimeContext();
 
-  console.log("check", forecastData);
+ 
   const labels = forecastData?.map((item) =>
     convertUnixTo12HoursFormate(item?.dt_txt.split(" ")[1])
   );

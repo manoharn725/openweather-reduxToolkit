@@ -8,7 +8,7 @@ const SearchBar = ({ onFormSubmit }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const dispatch = useDispatch();
-  const { citySuggestions = [] } = useSelector((state) => state.weather);
+  const { data:citySuggestions } = useSelector((state) => state.weather.citySuggestions);
   const cities = citySuggestions.map((data) => data.name);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const SearchBar = ({ onFormSubmit }) => {
 
   const handleSuggestionClick = (city) => {
     setTerm(city);
-    onFormSubmit(term);
+    onFormSubmit(city);
     setShowSuggestions(false);
     setTerm("");
   };

@@ -11,24 +11,26 @@ import ManoharImage from "./assets/manohar.jpg";
 import "./App.css";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
   const [graphData, setGraphData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const { currentWeather, isLoading, isError } = useSelector(
-    (state) => state.weather
-  );
-  console.log("current", currentWeather);
+  const {
+    data: currentWeather,
+    isLoading,
+    isError,
+  } = useSelector((state) => state.weather.currentWeather);
 
   useEffect(() => {
-    if (searchTerm) {
-      dispatch(fetchCurrentWeather(searchTerm));
+    if (!currentWeather) {
+      dispatch(fetchCurrentWeather("neralakatte"));
     }
   }, []);
 
+  console.log("current", currentWeather);
+
   const handleSubmit = (term) => {
-    setSearchTerm(term);
+    dispatch(fetchCurrentWeather(term));
   };
 
   const updateGraphData = (dataForGraph) => {
@@ -72,7 +74,7 @@ function App() {
   };
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error: {isError.message}</p>;
+  if (isError) return <p>Error: {JSON.stringify(isError)}</p>;
   return (
     <div className="app">
       <header className="header">
